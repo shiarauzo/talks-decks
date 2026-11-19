@@ -29,5 +29,5 @@ Rehearse `microinteractions`, then add the next talk folder when needed.
 ## Links
 
 - Repository: https://github.com/shiarauzo/talks-decks
-- Live (microinteractions): https://microinteractions-talk.vercel.app
-  (Target name `talks` is blocked by a disabled empty repo on the account.)
+- Live (microinteractions): https://microinteractions-amber.vercel.app
+  (GitHub name `talks` is blocked by a disabled empty repo on the account; using `talks-decks` for now.)
