@@ -33,6 +33,6 @@ Rehearse once with a timer, then adjust slide pacing if demos run long.
 ## Links
 
 - Documentation: PRESENTATION-GUIDE.md
-- Repository: https://github.com/shiarauzo/talks (folder `microinteractions`)
+- Repository: https://github.com/shiarauzo/talks-decks (folder `microinteractions`)
 - Live: https://microinteractions-talk.vercel.app
 - Primary source of craft: https://animations.dev/
