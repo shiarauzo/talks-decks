@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0c0e" />
+    <meta
+      name="description"
+      content="Charla de 60 minutos sobre microinteracciones, easing, duration, transform y patrones útiles."
+    />
+    <title>Microinteracciones</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="deck" aria-label="Presentación Microinteracciones">
+      <section class="slide active" data-slide="1">
+        <div class="title-slide">
+          <h1>Microinteracciones y movimiento</h1>
+          <p class="lead">
+            Cómo hacer que la interfaz se sienta viva sin que se sienta lenta.
+          </p>
+        </div>
+        <aside>
+          <b>Shiara:</b> Hoy no vamos a decorar pantallas. Vamos a aprender a decidir
+          cuándo mover algo, cuánto, con qué curva, y cuándo no animar nada.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="2">
+        <h2>¿Puedes sentir la diferencia?</h2>
+        <p class="lead">
+          Cinco pares en loop. A y B. No hay etiquetas de “buena” o “mala”.
+          Solo vota con la mano cuál se siente mejor.
+        </p>
+        <div class="pill-row">
+          <span class="pill">1 dropdown</span>
+          <span class="pill">2 spinner</span>
+          <span class="pill">3 toast</span>
+          <span class="pill">4 popover</span>
+          <span class="pill">5 lista</span>
+        </div>
+        <aside>
+          Reglas del juego: 20–30s por par. “Levanten la mano si prefieren A…
+          ahora B.” No revelar todavía qué cambia. Las respuestas van al final
+          del calentamiento.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="3">
+        <h2>Identifica la diferencia</h2>
+        <div class="quiz-split quiz-alt">
+          <article class="quiz-ex loop-ease-in">
+            <p class="quiz-label">A</p>
+            <div class="quiz-anchor">
+              <div class="quiz-trigger quiz-trigger-dropdown">
+                <span>Sort by</span>
+                <i aria-hidden="true"></i>
+              </div>
+              <div class="quiz-menu">
+                <span>Newest</span>
+                <span>Popular</span>
+                <span>Oldest</span>
+              </div>
+            </div>
+          </article>
+          <article class="quiz-ex loop-ease-out">
+            <p class="quiz-label">B</p>
+            <div class="quiz-anchor">
+              <div class="quiz-trigger quiz-trigger-dropdown">
+                <span>Sort by</span>
+                <i aria-hidden="true"></i>
+              </div>
+              <div class="quiz-menu">
+                <span>Newest</span>
+                <span>Popular</span>
+                <span>Oldest</span>
+              </div>
+            </div>
+          </article>
+        </div>
+        <aside>
+          Diferencia: <b>ease-in (A)</b> vs <b>ease-out (B)</b> al abrir un dropdown.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="4">
+        <h2>Identifica la diferencia</h2>
+        <div class="quiz-split quiz-alt">
+          <article class="quiz-ex">
+            <p class="quiz-label">A</p>
+            <div class="quiz-spinner slow" aria-hidden="true"></div>
+          </article>
+          <article class="quiz-ex">
+            <p class="quiz-label">B</p>
+            <div class="quiz-spinner fast" aria-hidden="true"></div>
+          </article>
+        </div>
+        <aside>
+          Diferencia: <b>duration larga (A)</b> vs <b>corta (B)</b>. El spinner más
+          rápido hace que la carga se sienta más ágil.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="5">
+        <h2>Identifica la diferencia</h2>
+        <div class="quiz-split quiz-alt">
+          <article class="quiz-ex loop-scale-zero">
+            <p class="quiz-label">A</p>
+            <div class="quiz-toast-stage">
+              <div class="quiz-toast">Saved to library</div>
+            </div>
+          </article>
+          <article class="quiz-ex loop-scale-soft">
+            <p class="quiz-label">B</p>
+            <div class="quiz-toast-stage">
+              <div class="quiz-toast">Saved to library</div>
+            </div>
+          </article>
+        </div>
+        <aside>
+          Diferencia: <b>scale(0) (A)</b> vs <b>scale(0.95) + opacity (B)</b> en un toast.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="6">
+        <h2>Identifica la diferencia</h2>
+        <div class="quiz-split quiz-alt">
+          <article class="quiz-ex loop-origin-center">
+            <p class="quiz-label">A</p>
+            <div class="quiz-anchor">
+              <div class="quiz-trigger">Share</div>
+              <div class="quiz-pop-wrap">
+                <div class="quiz-pop" aria-hidden="true">
+                  <span>Copy link</span>
+                  <span>Twitter</span>
+                  <span>Email</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="quiz-ex loop-origin-trigger">
+            <p class="quiz-label">B</p>
+            <div class="quiz-anchor">
+              <div class="quiz-trigger">Share</div>
+              <div class="quiz-pop-wrap">
+                <div class="quiz-pop" aria-hidden="true">
+                  <span>Copy link</span>
+                  <span>Twitter</span>
+                  <span>Email</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <aside>
+          Diferencia: <b>origin center (A)</b> vs <b>origin top center / trigger (B)</b>.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="7">
+        <h2>Identifica la diferencia</h2>
+        <div class="quiz-split quiz-alt">
+          <article class="quiz-ex">
+            <p class="quiz-label">A</p>
+            <div class="quiz-rows loop-stagger-off">
+              <span>Inbox</span>
+              <span>Drafts</span>
+              <span>Sent</span>
+              <span>Archive</span>
+            </div>
+          </article>
+          <article class="quiz-ex">
+            <p class="quiz-label">B</p>
+            <div class="quiz-rows loop-stagger-on">
+              <span>Inbox</span>
+              <span>Drafts</span>
+              <span>Sent</span>
+              <span>Archive</span>
+            </div>
+          </article>
+        </div>
+        <aside>
+          Diferencia: <b>todo a la vez (A)</b> vs <b>stagger ~55ms (B)</b>.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="8">
+        <h2>Lo que acabas de sentir.</h2>
+        <div class="answer-grid">
+          <article>
+            <span>1 — B</span>
+            <div>
+              <b>dropdown: ease-out vs ease-in</b>
+              <p>Empieza rápido = se siente responsivo al abrir.</p>
+            </div>
+          </article>
+          <article>
+            <span>2 — B</span>
+            <div>
+              <b>spinner rápido vs lento</b>
+              <p>Misma carga percibida distinta.</p>
+            </div>
+          </article>
+          <article>
+            <span>3 — B</span>
+            <div>
+              <b>scale(0.95) vs scale(0)</b>
+              <p>Nada real aparece desde cero absoluto.</p>
+            </div>
+          </article>
+          <article>
+            <span>4 — B</span>
+            <div>
+              <b>origin en el trigger vs centro</b>
+              <p>El popover debe “salir” del botón.</p>
+            </div>
+          </article>
+          <article>
+            <span>5 — B</span>
+            <div>
+              <b>stagger vs todo junto</b>
+              <p>Cascada corta (30–80ms) ordena la entrada.</p>
+            </div>
+          </article>
+        </div>
+        <aside>
+          Recalcar: en los 5 casos ganó B. No es coincidencia de gusto: son
+          reglas. El resto de la charla nombra y practica esas reglas.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="9">
+        <h2>Agenda</h2>
+        <div class="agenda">
+          <article>
+            <span>00</span>
+            <b>Calentamiento: sentir la diferencia</b>
+            <time>10 min</time>
+          </article>
+          <article>
+            <span>01</span>
+            <b>Qué es una microinteracción</b>
+            <time>7 min</time>
+          </article>
+          <article>
+            <span>02</span>
+            <b>Buenas vs malas (demos en vivo)</b>
+            <time>10 min</time>
+          </article>
+          <article>
+            <span>03</span>
+            <b>Basics: duration, easing, bezier, transform</b>
+            <time>18 min</time>
+          </article>
+          <article>
+            <span>04</span>
+            <b>Patrones útiles + checklist</b>
+            <time>12 min</time>
+          </article>
+          <article>
+            <span>05</span>
+            <b>Checklist y cierre</b>
+            <time>3 min</time>
+          </article>
+        </div>
+        <aside>
+          El calentamiento ya pasó. Ahora nombramos lo que sintieron.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="3">
+        <h2>El problema no es falta de talento. Es no tener reglas para decidir.</h2>
+        <p class="lead">
+          Taste en motion es un sistema entrenable: propósito, frecuencia,
+          duración y curva.
+        </p>
+        <aside>
+          Citar la idea de animations.dev: no estás “malo animando”; estás adivinando.
+          Hoy salimos con un blueprint.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="4">
+        <h2>Una microinteracción es un momento con un solo trabajo.</h2>
+        <p class="lead">
+          Ejemplos: like, toggle, toast, press, pull-to-refresh, validación de un campo.
+        </p>
+        <ul class="list-clean">
+          <li><i>1</i><span><b>Trigger</b> — qué la inicia (click, hover, scroll, timer)</span></li>
+          <li><i>2</i><span><b>Rules</b> — qué pasa si / si no</span></li>
+          <li><i>3</i><span><b>Feedback</b> — qué ve o siente el usuario</span></li>
+          <li><i>4</i><span><b>Loops / modes</b> — se repite, cambia, o termina</span></li>
+        </ul>
+        <aside>
+          Modelo clásico de Dan Saffer, útil para no confundir microinteracción con
+          “animación decorativa de marketing”.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="5">
+        <h2>Antes de animar: ¿para qué existe?</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Propósito válido</th>
+              <th>Ejemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Feedback</td>
+              <td>El botón baja a <code>scale(0.97)</code> al press</td>
+            </tr>
+            <tr>
+              <td>Indicación de estado</td>
+              <td>Morph de “Send” a check</td>
+            </tr>
+            <tr>
+              <td>Consistencia espacial</td>
+              <td>Toast entra y sale por el mismo lado</td>
+            </tr>
+            <tr>
+              <td>Evitar un salto brusco</td>
+              <td>Modal / drawer que aparece</td>
+            </tr>
+            <tr>
+              <td>Explicar</td>
+              <td>Animación de marketing que enseña un feature</td>
+            </tr>
+          </tbody>
+        </table>
+        <aside>
+          Si la respuesta es solo “queda cool” y se ve 100 veces al día: no animes.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="6">
+        <h2>Buenas vs malas</h2>
+        <p class="lead">
+          Misma intención. Distinto craft. La diferencia se siente antes de
+          explicarse.
+        </p>
+        <aside>
+          Pedir silencio 2 segundos en cada demo. Que el público vote con la mano:
+          izquierda o derecha se siente mejor.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="7">
+        <h2>Press: ¿la UI escuchó?</h2>
+        <div class="split">
+          <article class="panel">
+            <div class="panel-head">
+              <h3>Sin feedback táctil</h3>
+              <span class="tag bad">Mala</span>
+            </div>
+            <div class="demo-stage">
+              <button class="btn btn-bad" type="button">Paste</button>
+            </div>
+            <p class="hint"><code>transition: all 400ms ease-in</code></p>
+          </article>
+          <article class="panel">
+            <div class="panel-head">
+              <h3>Scale en :active</h3>
+              <span class="tag good">Buena</span>
+            </div>
+            <div class="demo-stage">
+              <button class="btn btn-good" type="button">Paste</button>
+            </div>
+            <p class="hint"><code>transform 150ms ease-out, scale(0.97)</code></p>
+          </article>
+        </div>
+        <aside>
+          Haz que todos clickeen mentalmente. La de la derecha confirma el press.
+          La izquierda se siente muerta o perezosa.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="8">
+        <h2>Misma duración. Distinta sensación.</h2>
+        <div class="split">
+          <article class="panel">
+            <div class="panel-head">
+              <h3>ease-in, 300ms</h3>
+              <span class="tag bad">Se siente lenta</span>
+            </div>
+            <div class="demo-stage">
+              <div class="dropdown-wrap">
+                <button class="btn" type="button" data-toggle-dropdown>Options</button>
+                <div class="dropdown bad">
+                  <button type="button">Duplicate</button>
+                  <button type="button">Archive</button>
+                  <button type="button">Delete</button>
+                </div>
+              </div>
+            </div>
+            <p class="hint">Empieza lento. El usuario espera.</p>
+          </article>
+          <article class="panel">
+            <div class="panel-head">
+              <h3>ease-out, 180ms</h3>
+              <span class="tag good">Se siente snappy</span>
+            </div>
+            <div class="demo-stage">
+              <div class="dropdown-wrap">
+                <button class="btn" type="button" data-toggle-dropdown>Options</button>
+                <div class="dropdown good">
+                  <button type="button">Duplicate</button>
+                  <button type="button">Archive</button>
+                  <button type="button">Delete</button>
+                </div>
+              </div>
+            </div>
+            <p class="hint">Empieza rápido. Responde al click.</p>
+          </article>
+        </div>
+        <aside>
+          Abrir ambos. Insistir: la duración real no importa tanto como el primer
+          frame de movimiento. Nunca uses ease-in para UI iniciada por el usuario.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="9">
+        <h2>Duración cambia la percepción de velocidad.</h2>
+        <div class="split">
+          <article class="panel">
+            <div class="panel-head">
+              <h3>Spinner lento</h3>
+              <span class="tag bad">App “pesada”</span>
+            </div>
+            <div class="demo-stage">
+              <div class="spinner slow" aria-hidden="true"></div>
+            </div>
+            <p class="hint">Mismo “tiempo de carga”. Peor percepción.</p>
+          </article>
+          <article class="panel">
+            <div class="panel-head">
+              <h3>Spinner rápido</h3>
+              <span class="tag good">App “ágil”</span>
+            </div>
+            <div class="demo-stage">
+              <div class="spinner fast" aria-hidden="true"></div>
+            </div>
+            <p class="hint">No acorta la red. Sí cambia cómo se siente.</p>
+          </article>
+        </div>
+        <aside>
+          Perceived performance. Un select a 180ms se siente más responsivo que uno
+          a 400ms aunque ambos “funcionen”.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="10">
+        <h2>Nada en el mundo real aparece desde scale(0).</h2>
+        <div class="split">
+          <article class="panel">
+            <div class="panel-head">
+              <h3>scale(0) → 1</h3>
+              <span class="tag bad">Sale de la nada</span>
+            </div>
+            <div class="demo-stage">
+              <div class="box scale-bad">pop</div>
+            </div>
+          </article>
+          <article class="panel">
+            <div class="panel-head">
+              <h3>scale(0.95) + opacity</h3>
+              <span class="tag good">Tiene cuerpo</span>
+            </div>
+            <div class="demo-stage">
+              <div class="box scale-good">pop</div>
+            </div>
+          </article>
+        </div>
+        <aside>
+          Empieza en 0.9–0.97 + opacity 0. El objeto ya “existe” un poco. Se siente
+          menos mágico-barato.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="11">
+        <h2>Frecuencia decide si animas.</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Cuántas veces al día</th>
+              <th>Decisión</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>100+ (atajos, command palette)</td>
+              <td><b>Sin animación.</b> Nunca.</td>
+            </tr>
+            <tr>
+              <td>Decenas (hover, nav de lista)</td>
+              <td>Quitar o reducir al mínimo</td>
+            </tr>
+            <tr>
+              <td>Ocasional (modal, drawer, toast)</td>
+              <td>Animación estándar</td>
+            </tr>
+            <tr>
+              <td>Rara / primera vez</td>
+              <td>Puedes agregar delight</td>
+            </tr>
+          </tbody>
+        </table>
+        <aside>
+          Raycast no anima al abrir. Si lo hiciera cientos de veces al día, sería
+          fricción. Keyboard-initiated: no animes.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="12">
+        <h2>Basics de movimiento</h2>
+        <p class="lead">
+          Duration, easing, curves, bezier, transform.
+          Las cinco palancas que controlan el feel.
+        </p>
+        <aside>
+          Pasar de “se ve raro” a vocabulario preciso. Si no puedes nombrarlo, no
+          puedes arreglarlo.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="13">
+        <h2>Duration: cuánto tiempo se mueve.</h2>
+        <p class="lead">Regla práctica: UI bajo <b>300ms</b>. Si duda, acorta.</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Rango</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Press de botón</td>
+              <td><code>100–160ms</code></td>
+            </tr>
+            <tr>
+              <td>Tooltip / popover chico</td>
+              <td><code>125–200ms</code></td>
+            </tr>
+            <tr>
+              <td>Dropdown / select</td>
+              <td><code>150–250ms</code></td>
+            </tr>
+            <tr>
+              <td>Modal / drawer</td>
+              <td><code>200–500ms</code></td>
+            </tr>
+            <tr>
+              <td>Marketing / explicación</td>
+              <td>Puede ser más largo</td>
+            </tr>
+          </tbody>
+        </table>
+        <aside>
+          Mostrar la tabla como defaults, no como dogma. El mood del producto mueve
+          el rango (Sonner es un poco más lento a propósito). Regla práctica: UI bajo 300ms.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="14">
+        <h2>Cómo se reparte ese tiempo.</h2>
+        <p class="lead">
+          La duración dice cuánto dura. El easing dice si acelera, frena o va
+          constante. Cuatro curvas. Una por slide.
+        </p>
+        <aside>
+          “Easing es el ingrediente principal del feel.” Luego recorrer las cuatro.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="15">
+        <h2>linear</h2>
+        <div class="easing-solo">
+          <div class="curve-viz linear solo"><i></i></div>
+          <p class="lead">
+            La velocidad no cambia nunca. Úsalo en spinners, marquee y progress bars.
+          </p>
+        </div>
+        <aside>
+          No acelera ni frena. Si lo usas en un modal, se siente mecánico.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="16">
+        <h2>ease-in</h2>
+        <div class="easing-solo">
+          <div class="curve-viz ease-in solo"><i></i></div>
+          <p class="lead">
+            Empieza lento y acelera al final. Evítalo en UI: se siente perezoso.
+          </p>
+        </div>
+        <aside>
+          El usuario mira el inicio. Si arranca lento, la app se siente lenta.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="17">
+        <h2>ease-out</h2>
+        <div class="easing-solo">
+          <div class="curve-viz ease-out solo"><i></i></div>
+          <p class="lead">
+            Empieza rápido y frena al llegar. Default para enter y dropdowns.
+          </p>
+        </div>
+        <aside>
+          Esta es la curva que más van a usar. Repetir: enter/exit → ease-out.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="18">
+        <h2>ease-in-out</h2>
+        <div class="easing-solo">
+          <div class="curve-viz ease-in-out solo"><i></i></div>
+          <p class="lead">
+            Arranca suave, acelera al medio y frena al final. Para morphs en pantalla.
+          </p>
+        </div>
+        <aside>
+          No es para opens de UI. Es para mover o transformar algo que ya se ve.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="19">
+        <h2>El blueprint de easing.</h2>
+        <ul class="list-clean">
+          <li><i>→</i><span>¿Entra o sale? → <b>ease-out</b></span></li>
+          <li><i>→</i><span>¿Se mueve / morph en pantalla? → <b>ease-in-out</b></span></li>
+          <li><i>→</i><span>¿Hover / color? → <b>ease</b></span></li>
+          <li><i>→</i><span>¿Movimiento constante? → <b>linear</b></span></li>
+          <li><i>→</i><span>Default → <b>ease-out</b></span></li>
+        </ul>
+        <aside>
+          Sistema de Emil. Repetirlo en voz alta. Luego: las curvas built-in de CSS
+          son débiles; usa custom.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="16">
+        <h2>Bezier: la curva custom.</h2>
+        <p class="lead">
+          <code>cubic-bezier(x1, y1, x2, y2)</code> define dos handles. No inventes
+          curvas: copia de easing.dev y guárdalas como tokens CSS.
+        </p>
+        <div class="pill-row">
+          <span class="pill">ease-out: 0.23, 1, 0.32, 1</span>
+          <span class="pill">ease-in-out: 0.77, 0, 0.175, 1</span>
+          <span class="pill">drawer: 0.32, 0.72, 0, 1</span>
+        </div>
+        <p class="code" style="margin-top: 1.25rem">
+          --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+        </p>
+        <aside>
+          Si hay tiempo, abrir easing.dev en una ventana. Si no, dejar el recurso
+          para después.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="17">
+        <h2>Transform: qué propiedades mover.</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Usa</th>
+              <th>Evita animar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>transform</code> (translate, scale, rotate)</td>
+              <td><code>width</code> / <code>height</code></td>
+            </tr>
+            <tr>
+              <td><code>opacity</code></td>
+              <td><code>top</code> / <code>left</code></td>
+            </tr>
+            <tr>
+              <td><code>clip-path</code> (con cuidado)</td>
+              <td><code>margin</code> / <code>padding</code></td>
+            </tr>
+            <tr>
+              <td><code>filter</code> sutil (blur ≤ 2–4px)</td>
+              <td><code>transition: all</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <aside>
+          Solo transform y opacity van a compositor/GPU de forma predecible. El resto
+          dispara layout y paint.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="18">
+        <h2>Detalles de transform que importan.</h2>
+        <ul class="list-clean">
+          <li>
+            <i>1</i>
+            <span>
+              <b>translateY(100%)</b> es relativo al propio elemento. Ideal para
+              drawers y toasts.
+            </span>
+          </li>
+          <li>
+            <i>2</i>
+            <span>
+              <b>scale()</b> escala también a los hijos. El texto “respira” con el
+              botón.
+            </span>
+          </li>
+          <li>
+            <i>3</i>
+            <span>
+              <b>transform-origin</b> define desde dónde crece. Popovers: desde el
+              trigger. Modales: centro.
+            </span>
+          </li>
+        </ul>
+        <aside>
+          Origin-aware es uno de esos detalles “invisibles” que en agregado hacen
+          que el producto se sienta caro.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="19">
+        <h2>Origin-aware vs centro.</h2>
+        <p class="quiz-prompt">Misma animación. Solo cambia el transform-origin.</p>
+        <div class="quiz-split">
+          <article class="quiz-ex loop-origin-center">
+            <p class="quiz-label">A</p>
+            <p class="hint">origin: center</p>
+            <div class="quiz-anchor">
+              <div class="quiz-trigger">Share</div>
+              <div class="quiz-pop-wrap">
+                <div class="quiz-pop" aria-hidden="true">
+                  <span>Copy link</span>
+                  <span>Twitter</span>
+                  <span>Email</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="quiz-ex loop-origin-trigger">
+            <p class="quiz-label">B</p>
+            <p class="hint">origin: top center</p>
+            <div class="quiz-anchor">
+              <div class="quiz-trigger">Share</div>
+              <div class="quiz-pop-wrap">
+                <div class="quiz-pop" aria-hidden="true">
+                  <span>Copy link</span>
+                  <span>Twitter</span>
+                  <span>Email</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <aside>
+          B se siente causado por el botón. Excepción: modales se quedan en center.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="20">
+        <h2>Patrones útiles</h2>
+        <p class="lead">
+          Recetas que puedes copiar mañana sin reinventar el feel.
+        </p>
+        <aside>
+          No son librerías. Son decisiones reutilizables.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="21">
+        <h2>Patrón: press feedback</h2>
+        <p class="lead">
+          Aplica a cualquier cosa presionable. Rango seguro:
+          <code>0.95–0.98</code>.
+        </p>
+        <pre class="code" style="margin:0;white-space:pre-wrap;line-height:1.5;color:var(--muted)">
+.button {
+  transition: transform 160ms var(--ease-out);
+}
+.button:active {
+  transform: scale(0.97);
+}
+</pre>
+        <aside>
+          Este es el patrón más barato con más ROI. Si solo implementan uno hoy,
+          que sea este.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="22">
+        <h2>Patrón: stagger de entrada</h2>
+        <div class="split">
+          <article class="panel">
+            <div class="panel-head">
+              <h3>Cascada 50ms</h3>
+              <button class="btn" type="button" data-replay-stagger>Replay</button>
+            </div>
+            <div class="demo-stage">
+              <div class="stagger-list run">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <p class="hint">Delays cortos: 30–80ms. No bloquees interacción.</p>
+          </article>
+          <article class="panel">
+            <div class="panel-head">
+              <h3>Reglas</h3>
+            </div>
+            <ul class="list-clean">
+              <li><i>–</i><span>Parte el contenido en chunks semánticos</span></li>
+              <li><i>–</i><span>No animes un solo contenedor gigante</span></li>
+              <li><i>–</i><span>Exit más sutil que enter</span></li>
+            </ul>
+          </article>
+        </div>
+        <aside>
+          Replay un par de veces. Si el delay es largo, la UI se siente lenta aunque
+          cada item sea rápido.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="23">
+        <h2>Más patrones que valen oro.</h2>
+        <ul class="list-clean">
+          <li>
+            <i>1</i>
+            <span>
+              <b>Transitions &gt; keyframes</b> para UI dinámica. Son interruptibles.
+            </span>
+          </li>
+          <li>
+            <i>2</i>
+            <span>
+              <b>Tooltips:</b> delay la primera vez; las siguientes, instant + sin
+              animación.
+            </span>
+          </li>
+          <li>
+            <i>3</i>
+            <span>
+              <b>Enter lento / exit rápido</b> cuando hay decisión (hold-to-delete).
+            </span>
+          </li>
+          <li>
+            <i>4</i>
+            <span>
+              <b>Blur 2px</b> para enmascarar un crossfade imperfecto.
+            </span>
+          </li>
+          <li>
+            <i>5</i>
+            <span>
+              <b>Springs</b> para gestos con momentum. Duration-based para UI
+              predecible.
+            </span>
+          </li>
+        </ul>
+        <aside>
+          No profundizar en código de todos. Nombrarlos y dejar que pregunten en Q&A.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="24">
+        <h2>Checklist para mañana.</h2>
+        <ul class="checklist">
+          <li>No uses <code>transition: all</code></li>
+          <li>No uses <code>ease-in</code> en UI</li>
+          <li>No entres desde <code>scale(0)</code></li>
+          <li>Press con <code>scale(0.97)</code></li>
+          <li>Popovers origin-aware</li>
+          <li>UI bajo 300ms</li>
+          <li>Curvas custom en tokens</li>
+          <li>Respeta <code>prefers-reduced-motion</code></li>
+          <li>No animes acciones de teclado</li>
+          <li>Revisa en slow motion al día siguiente</li>
+        </ul>
+        <aside>
+          Esta slide es la handout. Pausar. Dejar que fotografíen.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="26">
+        <h2>Los detalles que nadie nota son exactamente los que hacen que todo se sienta bien.</h2>
+        <p class="lead">Gracias. Preguntas.</p>
+        <aside>
+          Abrir Q&A. Si sobra tiempo: live-fix de un componente que alguien traiga
+          (botón, modal, toast).
+        </aside>
+      </section>
+    </main>
+
+    <aside
+      class="notes-panel"
+      id="notesPanel"
+      aria-hidden="true"
+      aria-label="Notas del speaker"
+    >
+      <div class="notes-top">
+        <b>Notas — slide <span id="notesSlide">01</span></b>
+        <button type="button" id="closeNotes" aria-label="Cerrar notas">cerrar</button>
+      </div>
+      <div id="notesContent"></div>
+    </aside>
+
+    <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+    <script type="module" src="./presentation.ts"></script>
+  </body>
+</html>
