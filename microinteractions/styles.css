@@ -168,6 +168,23 @@ input {
   font-size: 0.85rem;
 }
 
+.agenda time a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.agenda time a:hover {
+  color: var(--text);
+}
+
+.section-num {
+  margin: 0 0 0.65rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -182,10 +199,10 @@ input {
 }
 
 .panel {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 1.25rem;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
   min-height: 220px;
   display: flex;
   flex-direction: column;
@@ -194,9 +211,9 @@ input {
 
 .panel-head {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
 }
 
 .tag {
@@ -223,11 +240,11 @@ input {
   flex: 1;
   display: grid;
   place-items: center;
-  background: var(--surface-2);
-  border-radius: 12px;
+  background: transparent;
+  border-radius: 0;
   min-height: 140px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hint {
@@ -345,10 +362,6 @@ input {
 .btn:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 3px;
-}
-
-.btn-bad {
-  transition: all 400ms ease-in;
 }
 
 .btn-good {
@@ -594,8 +607,8 @@ input {
 
 .easing-solo {
   display: grid;
-  gap: 1.25rem;
-  max-width: 520px;
+  gap: 1.5rem;
+  max-width: 640px;
 }
 
 .easing-solo .lead {
@@ -605,6 +618,172 @@ input {
 
 .easing-solo .hint {
   margin: 0;
+}
+
+.use-guide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+@media (max-width: 700px) {
+  .use-guide {
+    grid-template-columns: 1fr;
+  }
+}
+
+.use-label {
+  margin: 0 0 0.55rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.use-label.do {
+  color: var(--good);
+}
+
+.use-label.dont {
+  color: var(--bad);
+}
+
+.use-guide ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.use-guide li {
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+
+.use-guide li::before {
+  content: "– ";
+  color: var(--faint);
+}
+
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+  width: min(100%, 1080px);
+}
+
+@media (max-width: 900px) {
+  .vocab-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.vocab-card {
+  appearance: none;
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+  text-align: left;
+  padding: 0.9rem 1rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  transition:
+    border-color 160ms var(--ease-out),
+    background 160ms var(--ease-out);
+}
+
+.vocab-card:hover,
+.vocab-card:focus-visible {
+  border-color: color-mix(in oklab, var(--ink) 35%, transparent);
+  background: var(--surface);
+  outline: none;
+}
+
+.vocab-name {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.vocab-def {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.35;
+  min-height: 2.6em;
+}
+
+.vocab-track {
+  display: block;
+  position: relative;
+  height: 36px;
+  margin-top: 0.55rem;
+  border-radius: 8px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.vocab-track i {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.vocab-card.is-playing[data-vocab="ease-out"] .vocab-track i {
+  animation: vocabMove 900ms ease-out both;
+}
+
+.vocab-card.is-playing[data-vocab="ease-in"] .vocab-track i {
+  animation: vocabMove 900ms ease-in both;
+}
+
+.vocab-card.is-playing[data-vocab="ease-in-out"] .vocab-track i {
+  animation: vocabMove 900ms ease-in-out both;
+}
+
+.vocab-card.is-playing[data-vocab="linear"] .vocab-track i {
+  animation: vocabMove 900ms linear both;
+}
+
+.vocab-card.is-playing[data-vocab="cubic"] .vocab-track i {
+  animation: vocabMove 900ms var(--ease-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="asymmetric"] .vocab-track i {
+  animation: vocabAsym 1100ms both;
+}
+
+@keyframes vocabMove {
+  from {
+    left: 10px;
+  }
+  to {
+    left: calc(100% - 24px);
+  }
+}
+
+@keyframes vocabAsym {
+  0% {
+    left: 10px;
+    animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  55% {
+    left: calc(100% - 24px);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  100% {
+    left: 10px;
+  }
 }
 
 .curve-viz.solo {
@@ -881,8 +1060,27 @@ input {
   margin-bottom: 2rem;
 }
 
+.quiz-split.quiz-alt {
+  grid-template-columns: 1fr;
+  min-height: 260px;
+  place-items: center;
+}
+
+.quiz-alt .quiz-ex {
+  display: none;
+}
+
+.quiz-alt .quiz-ex.is-active {
+  display: grid;
+}
+
+.quiz-alt .quiz-ex.is-active .quiz-pop {
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
 @media (max-width: 900px) {
-  .quiz-split {
+  .quiz-split:not(.quiz-alt) {
     grid-template-columns: 1fr;
   }
 }

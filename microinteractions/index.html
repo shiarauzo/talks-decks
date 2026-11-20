@@ -27,6 +27,7 @@
       </section>
 
       <section class="slide" data-slide="2">
+        <p class="section-num">00</p>
         <h2>¿Puedes sentir la diferencia?</h2>
         <aside>
           Reglas del juego: 20–30s por par. “Levanten la mano si prefieren A…
@@ -169,32 +170,32 @@
           <article>
             <span>00</span>
             <b>Calentamiento: sentir la diferencia</b>
-            <time>10 min</time>
+            <time><a href="#2">#2</a> · 10 min</time>
           </article>
           <article>
             <span>01</span>
             <b>Qué es una microinteracción</b>
-            <time>7 min</time>
+            <time><a href="#9">#9</a> · 7 min</time>
           </article>
           <article>
             <span>02</span>
-            <b>Buenas vs malas (demos en vivo)</b>
-            <time>10 min</time>
+            <b>Buenas y malas interacciones</b>
+            <time><a href="#12">#12</a> · 10 min</time>
           </article>
           <article>
             <span>03</span>
             <b>Basics: duration, easing, bezier, transform</b>
-            <time>18 min</time>
+            <time><a href="#18">#18</a> · 18 min</time>
           </article>
           <article>
             <span>04</span>
             <b>Patrones útiles + checklist</b>
-            <time>12 min</time>
+            <time><a href="#30">#30</a> · 12 min</time>
           </article>
           <article>
             <span>05</span>
-            <b>Checklist y cierre</b>
-            <time>3 min</time>
+            <b>Cierre</b>
+            <time><a href="#34">#34</a> · 3 min</time>
           </article>
         </div>
         <aside>
@@ -203,6 +204,7 @@
       </section>
 
       <section class="slide" data-slide="3">
+        <p class="section-num">01</p>
         <h2>Sin reglas, el movimiento se decide a ojo.</h2>
         <p class="lead">
           Taste en motion es un sistema entrenable: propósito, frecuencia,
@@ -269,7 +271,8 @@
       </section>
 
       <section class="slide" data-slide="6">
-        <h2>Buenas vs malas</h2>
+        <p class="section-num">02</p>
+        <h2>Buenas y malas interacciones</h2>
         <p class="lead">
           Misma intención. Distinto craft. La diferencia se siente antes de
           explicarse.
@@ -289,9 +292,9 @@
               <span class="tag bad">Mala</span>
             </div>
             <div class="demo-stage">
-              <button class="btn btn-bad" type="button">Paste</button>
+              <button class="btn" type="button">Paste</button>
             </div>
-            <p class="hint"><code>transition: all 400ms ease-in</code></p>
+            <p class="hint">Solo estado default. Sin <code>:active</code>.</p>
           </article>
           <article class="panel">
             <div class="panel-head">
@@ -301,7 +304,10 @@
             <div class="demo-stage">
               <button class="btn btn-good" type="button">Paste</button>
             </div>
-            <p class="hint"><code>transform 150ms ease-out, scale(0.97)</code></p>
+            <p class="hint">
+              <code>:active { transform: scale(0.97) }</code> ·
+              <code>150ms ease-out</code>
+            </p>
           </article>
         </div>
         <aside>
@@ -413,7 +419,7 @@
       </section>
 
       <section class="slide" data-slide="11">
-        <h2>Frecuencia decide si animas.</h2>
+        <h2>Frecuencia de animación</h2>
         <table class="table">
           <thead>
             <tr>
@@ -424,7 +430,7 @@
           <tbody>
             <tr>
               <td>100+ (atajos, command palette)</td>
-              <td><b>Sin animación.</b> Nunca.</td>
+              <td><b>No usar animación</b></td>
             </tr>
             <tr>
               <td>Decenas (hover, nav de lista)</td>
@@ -447,6 +453,7 @@
       </section>
 
       <section class="slide" data-slide="12">
+        <p class="section-num">03</p>
         <h2>Basics de movimiento</h2>
         <p class="lead">
           Duration, easing, curves, bezier, transform.
@@ -499,12 +506,34 @@
 
       <section class="slide" data-slide="14">
         <h2>Cómo se reparte ese tiempo.</h2>
-        <p class="lead">
-          La duración dice cuánto dura. El easing dice si acelera, frena o va
-          constante. Cuatro curvas. Una por slide.
-        </p>
+        <ul class="list-clean">
+          <li>
+            <i>1</i>
+            <span><b>Duration</b> — cuánto dura el movimiento</span>
+          </li>
+          <li>
+            <i>2</i>
+            <span><b>Easing</b> — si acelera, frena o va constante</span>
+          </li>
+          <li>
+            <i>3</i>
+            <span><b>linear</b> — velocidad constante</span>
+          </li>
+          <li>
+            <i>4</i>
+            <span><b>ease-in</b> — empieza lento, acelera</span>
+          </li>
+          <li>
+            <i>5</i>
+            <span><b>ease-out</b> — empieza rápido, frena</span>
+          </li>
+          <li>
+            <i>6</i>
+            <span><b>ease-in-out</b> — suave al inicio y al final</span>
+          </li>
+        </ul>
         <aside>
-          “Easing es el ingrediente principal del feel.” Luego recorrer las cuatro.
+          Vocabulario mínimo. Luego una curva por slide.
         </aside>
       </section>
 
@@ -512,12 +541,27 @@
         <h2>linear</h2>
         <div class="easing-solo">
           <div class="curve-viz linear solo"><i></i></div>
-          <p class="lead">
-            La velocidad no cambia nunca. Úsalo en spinners, marquee y progress bars.
-          </p>
+          <div class="use-guide">
+            <div>
+              <p class="use-label do">Usar</p>
+              <ul>
+                <li>Spinners y loaders</li>
+                <li>Progress bars</li>
+                <li>Marquee / loops constantes</li>
+              </ul>
+            </div>
+            <div>
+              <p class="use-label dont">No usar</p>
+              <ul>
+                <li>Modales y drawers</li>
+                <li>Dropdowns y toasts</li>
+                <li>Cualquier enter / exit de UI</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <aside>
-          No acelera ni frena. Si lo usas en un modal, se siente mecánico.
+          Velocidad fija. En UI se siente mecánico; en loops se siente honesto.
         </aside>
       </section>
 
@@ -525,12 +569,30 @@
         <h2>ease-in</h2>
         <div class="easing-solo">
           <div class="curve-viz ease-in solo"><i></i></div>
-          <p class="lead">
-            Empieza lento y acelera al final. Evítalo en UI: se siente perezoso.
-          </p>
+          <p class="hint">Empieza lento y termina rápido. En producto casi nunca.</p>
+          <div class="use-guide">
+            <div>
+              <p class="use-label do">Usar</p>
+              <ul>
+                <li>Caída / gravedad (item a la papelera)</li>
+                <li>Algo que se “escapa” de pantalla</li>
+                <li>Marketing o game feel con impacto al final</li>
+              </ul>
+            </div>
+            <div>
+              <p class="use-label dont">No usar</p>
+              <ul>
+                <li>Opens (modal, menu, toast)</li>
+                <li>Press / hover / click</li>
+                <li>Enter o exit de UI de producto</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <aside>
-          El usuario mira el inicio. Si arranca lento, la app se siente lenta.
+          El usuario mira el primer frame. Si arranca lento, la app se siente
+          lenta aunque dure lo mismo. Para UI: ease-out. ease-in queda para
+          metáforas físicas (caer, escapar), no para controles.
         </aside>
       </section>
 
@@ -538,12 +600,27 @@
         <h2>ease-out</h2>
         <div class="easing-solo">
           <div class="curve-viz ease-out solo"><i></i></div>
-          <p class="lead">
-            Empieza rápido y frena al llegar. Default para enter y dropdowns.
-          </p>
+          <div class="use-guide">
+            <div>
+              <p class="use-label do">Usar</p>
+              <ul>
+                <li>Enter de UI (default)</li>
+                <li>Dropdowns, popovers, toasts</li>
+                <li>Press y feedback al click</li>
+              </ul>
+            </div>
+            <div>
+              <p class="use-label dont">No usar</p>
+              <ul>
+                <li>Spinners / progress loops</li>
+                <li>Marquee continuo</li>
+                <li>Movimiento que no debe frenar</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <aside>
-          Esta es la curva que más van a usar. Repetir: enter/exit → ease-out.
+          La curva que más van a usar. Enter / exit → ease-out.
         </aside>
       </section>
 
@@ -551,12 +628,27 @@
         <h2>ease-in-out</h2>
         <div class="easing-solo">
           <div class="curve-viz ease-in-out solo"><i></i></div>
-          <p class="lead">
-            Arranca suave, acelera al medio y frena al final. Para morphs en pantalla.
-          </p>
+          <div class="use-guide">
+            <div>
+              <p class="use-label do">Usar</p>
+              <ul>
+                <li>Morphs de algo ya visible</li>
+                <li>Mover un elemento en pantalla</li>
+                <li>Transiciones de layout grandes</li>
+              </ul>
+            </div>
+            <div>
+              <p class="use-label dont">No usar</p>
+              <ul>
+                <li>Opens / closes de UI</li>
+                <li>Dropdowns y modales</li>
+                <li>Respuesta rápida a un click</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <aside>
-          No es para opens de UI. Es para mover o transformar algo que ya se ve.
+          Para transformar lo que ya se ve. No para opens.
         </aside>
       </section>
 
@@ -663,7 +755,7 @@
       <section class="slide" data-slide="19">
         <h2>Origin-aware vs centro.</h2>
         <p class="quiz-prompt">Misma animación. Solo cambia el transform-origin.</p>
-        <div class="quiz-split">
+        <div class="quiz-split quiz-alt">
           <article class="quiz-ex loop-origin-center">
             <p class="quiz-label">A</p>
             <p class="hint">origin: center</p>
@@ -699,6 +791,7 @@
       </section>
 
       <section class="slide" data-slide="20">
+        <p class="section-num">04</p>
         <h2>Patrones útiles</h2>
         <p class="lead">
           Recetas que puedes copiar mañana sin reinventar el feel.
@@ -764,66 +857,48 @@
       </section>
 
       <section class="slide" data-slide="23">
-        <h2>Más patrones que valen oro.</h2>
-        <ul class="list-clean">
-          <li>
-            <i>1</i>
-            <span>
-              <b>Transitions &gt; keyframes</b> para UI dinámica. Son interruptibles.
-            </span>
-          </li>
-          <li>
-            <i>2</i>
-            <span>
-              <b>Tooltips:</b> delay la primera vez; las siguientes, instant + sin
-              animación.
-            </span>
-          </li>
-          <li>
-            <i>3</i>
-            <span>
-              <b>Enter lento / exit rápido</b> cuando hay decisión (hold-to-delete).
-            </span>
-          </li>
-          <li>
-            <i>4</i>
-            <span>
-              <b>Blur 2px</b> para enmascarar un crossfade imperfecto.
-            </span>
-          </li>
-          <li>
-            <i>5</i>
-            <span>
-              <b>Springs</b> para gestos con momentum. Duration-based para UI
-              predecible.
-            </span>
-          </li>
-        </ul>
+        <h2>Vocabulario: easing</h2>
+        <p class="lead">Haz clic en cada término para sentirlo.</p>
+        <div class="vocab-grid">
+          <button class="vocab-card" type="button" data-vocab="ease-out">
+            <span class="vocab-name">Ease-out</span>
+            <span class="vocab-def">Empieza rápido, frena al final. Default de UI.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="ease-in">
+            <span class="vocab-name">Ease-in</span>
+            <span class="vocab-def">Empieza lento, termina rápido. Evitar en UI.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="ease-in-out">
+            <span class="vocab-name">Ease-in-out</span>
+            <span class="vocab-def">Lento–rápido–lento. Para mover algo ya en pantalla.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="linear">
+            <span class="vocab-name">Linear</span>
+            <span class="vocab-def">Velocidad constante. Spinners y marquees.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="cubic">
+            <span class="vocab-name">Cubic-bezier</span>
+            <span class="vocab-def">Curva custom. Más punch que las built-in.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="asymmetric">
+            <span class="vocab-name">Asymmetric</span>
+            <span class="vocab-def">Acelera y frena distinto. Se siente más viva.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+        </div>
         <aside>
-          No profundizar en código de todos. Nombrarlos y dejar que pregunten en Q&A.
-        </aside>
-      </section>
-
-      <section class="slide" data-slide="24">
-        <h2>Checklist para mañana.</h2>
-        <ul class="checklist">
-          <li>No uses <code>transition: all</code></li>
-          <li>No uses <code>ease-in</code> en UI</li>
-          <li>No entres desde <code>scale(0)</code></li>
-          <li>Press con <code>scale(0.97)</code></li>
-          <li>Popovers origin-aware</li>
-          <li>UI bajo 300ms</li>
-          <li>Curvas custom en tokens</li>
-          <li>Respeta <code>prefers-reduced-motion</code></li>
-          <li>No animes acciones de teclado</li>
-          <li>Revisa en slow motion al día siguiente</li>
-        </ul>
-        <aside>
-          Esta slide es la handout. Pausar. Dejar que fotografíen.
+          Fuente: animations.dev/vocabulary#easing. Que el público clickee. Comparar
+          ease-in vs ease-out en el mismo gesto.
         </aside>
       </section>
 
       <section class="slide" data-slide="26">
+        <p class="section-num">05</p>
         <h2>Los detalles que nadie nota son exactamente los que hacen que todo se sienta bien.</h2>
         <p class="lead">Gracias. Preguntas.</p>
         <aside>

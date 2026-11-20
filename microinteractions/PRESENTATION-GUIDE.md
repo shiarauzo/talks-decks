@@ -29,7 +29,7 @@ Al terminar, la audiencia puede:
 | 14–19 | Buenas vs malas (demos) | 10:00 |
 | 20–27 | Duration, easing, bezier, transform | 18:00 |
 | 28–31 | Patrones + checklist | 12:00 |
-| 33–34 | Checklist y cierre | 3:00 |
+| 34 | Cierre | 3:00 |
 |  | **Total** | **60:00** |
 
 ## Guion
