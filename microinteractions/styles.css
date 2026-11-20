@@ -874,46 +874,11 @@ input {
   justify-items: center;
 }
 
-.slide:has(.quiz-alt) > h2 {
+.slide:has(.quiz-split) > h2 {
   text-align: center;
   width: min(100%, 1180px);
   margin-inline: auto;
   margin-bottom: 2rem;
-}
-
-.quiz-split.quiz-alt {
-  grid-template-columns: 1fr 1fr;
-  min-height: 240px;
-}
-
-.quiz-alt .quiz-ex {
-  transition: opacity 180ms var(--ease-out);
-}
-
-.quiz-alt .quiz-ex:not(.is-active) {
-  opacity: 0.42;
-}
-
-.quiz-alt .quiz-ex.is-active {
-  opacity: 1;
-}
-
-.quiz-alt .quiz-ex:not(.is-active) .quiz-menu,
-.quiz-alt .quiz-ex:not(.is-active) .quiz-toast,
-.quiz-alt .quiz-ex:not(.is-active) .quiz-pop {
-  animation: none !important;
-  opacity: 0 !important;
-  transform: none !important;
-}
-
-.quiz-alt .quiz-ex:not(.is-active) .quiz-rows span {
-  animation: none !important;
-  opacity: 0 !important;
-  transform: none !important;
-}
-
-.quiz-alt .quiz-ex:not(.is-active) .quiz-spinner {
-  animation: none !important;
 }
 
 @media (max-width: 900px) {
@@ -1194,6 +1159,7 @@ input {
   display: grid;
   gap: 0.45rem;
   width: 220px;
+  min-height: 168px;
 }
 
 .quiz-rows span {
@@ -1209,28 +1175,28 @@ input {
 
 @keyframes quizRowIn {
   0%,
-  10% {
+  6% {
     opacity: 0;
     transform: translateY(8px);
   }
-  28%,
-  62% {
+  18%,
+  78% {
     opacity: 1;
     transform: translateY(0);
   }
-  82%,
+  92%,
   100% {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(4px);
   }
 }
 
 .loop-stagger-off span {
-  animation: quizRowIn 2.2s var(--ease-out) infinite;
+  animation: quizRowIn 2.8s var(--ease-out) infinite;
 }
 
 .loop-stagger-on span {
-  animation: quizRowIn 2.2s var(--ease-out) infinite;
+  animation: quizRowIn 2.8s var(--ease-out) infinite;
 }
 
 .loop-stagger-on span:nth-child(1) {

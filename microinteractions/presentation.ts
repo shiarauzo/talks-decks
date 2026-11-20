@@ -31,54 +31,7 @@ const restartLoop = (element: HTMLElement): void => {
   element.style.removeProperty("animation");
 };
 
-const QUIZ_ALT_HOLD_MS = 3000;
-let quizAltTimer: number | null = null;
-let quizAltShowB = false;
-
-const stopQuizAlt = (): void => {
-  if (quizAltTimer !== null) {
-    window.clearInterval(quizAltTimer);
-    quizAltTimer = null;
-  }
-  quizAltShowB = false;
-};
-
-const restartQuizMotion = (ex: HTMLElement): void => {
-  ex
-    .querySelectorAll<HTMLElement>(
-      ".quiz-menu, .quiz-toast, .quiz-pop, .quiz-rows span, .quiz-spinner",
-    )
-    .forEach(restartLoop);
-};
-
-const applyQuizAlt = (split: HTMLElement, playB: boolean): void => {
-  const items = [...split.querySelectorAll<HTMLElement>(":scope > .quiz-ex")];
-  if (items.length < 2) return;
-
-  items.forEach((item, index) => {
-    const active = playB ? index === 1 : index === 0;
-    item.classList.toggle("is-active", active);
-  });
-
-  const active = items[playB ? 1 : 0];
-  if (active) restartQuizMotion(active);
-};
-
-const startQuizAlt = (slide: HTMLElement): void => {
-  stopQuizAlt();
-  const split = slide.querySelector<HTMLElement>(".quiz-split.quiz-alt");
-  if (!split) return;
-
-  // Both stay visible; only one side plays at a time.
-  applyQuizAlt(split, false);
-  quizAltTimer = window.setInterval(() => {
-    quizAltShowB = !quizAltShowB;
-    applyQuizAlt(split, quizAltShowB);
-  }, QUIZ_ALT_HOLD_MS);
-};
-
 const restartDemos = (slide: HTMLElement | undefined): void => {
-  stopQuizAlt();
   if (!slide) return;
 
   slide.querySelectorAll<HTMLElement>(".stagger-list").forEach((list) => {
@@ -86,11 +39,6 @@ const restartDemos = (slide: HTMLElement | undefined): void => {
     void list.offsetWidth;
     list.classList.add("run");
   });
-
-  if (slide.querySelector(".quiz-split.quiz-alt")) {
-    startQuizAlt(slide);
-    return;
-  }
 
   // Keep side-by-side quiz loops in sync when entering the slide.
   slide

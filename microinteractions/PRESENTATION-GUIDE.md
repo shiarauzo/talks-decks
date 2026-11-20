@@ -4,7 +4,7 @@ Guion de práctica para una charla de 60 minutos.
 
 ## Tesis
 
-> El problema no es falta de talento. Es no tener reglas para decidir.
+> Sin reglas, el movimiento se decide a ojo.
 
 Taste en motion es un sistema: propósito, frecuencia, duración y curva.
 
@@ -22,7 +22,7 @@ Al terminar, la audiencia puede:
 | Slides | Contenido | Tiempo |
 | --- | --- | ---: |
 | 1–2 | Título + reglas del calentamiento | 2:00 |
-| 3–7 | 5 pares A/B en loop (votar) | 8:00 |
+| 3–6 | 4 pares A/B en loop (votar) | 7:00 |
 | 8 | Respuestas del calentamiento | 2:00 |
 | 9–11 | Mapa + tesis | 4:00 |
 | 12–13 | Qué es / propósito | 7:00 |
@@ -41,7 +41,7 @@ Al terminar, la audiencia puede:
 
 ### Slide 2 — 1:00
 
-> Antes de teoría: calentamos el ojo. Cinco pares en loop. A y B. Voten con
+> Antes de teoría: calentamos el ojo. Cuatro pares en loop. A y B. Voten con
 > la mano cuál se siente mejor. No revelo todavía qué cambia.
 
 ### Slide 3 — 1:30 — Easing
@@ -66,10 +66,10 @@ Modal en loop. A = ease-in. B = ease-out. Misma duración.
 
 > ¿Cuál entrada se siente más ordenada?
 
-### Slide 8 — 2:00 — Respuestas
+### Slide 8 — 0:30 — Diferencias
 
-> En los cinco ganó B. No es gusto: son reglas. ease-out, duración corta,
-> scale 0.95, origin en el trigger, stagger corto. Ahora les ponemos nombre.
+> Solo el título. En voz: ease-out, scale suave, origin en el trigger, stagger.
+> Ahora les ponemos nombre.
 
 ### Slide 9 — 1:00
 
@@ -77,8 +77,8 @@ Modal en loop. A = ease-in. B = ease-out. Misma duración.
 
 ### Slide 10 — 2:30
 
-> Si tus animaciones no te convencen, casi nunca es “no tengo talento”. Es que
-> estás adivinando. Hoy salimos con reglas.
+> Sin reglas, el movimiento se decide a ojo. Hoy salimos con un sistema:
+> propósito, frecuencia, duración y curva.
 
 Referencia: animations.dev — taste explicado con razones (ease-out, 180ms,
 springs, scale 0.97, o ninguna animación).
