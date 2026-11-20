@@ -31,16 +31,14 @@ const restartLoop = (element: HTMLElement): void => {
   element.style.removeProperty("animation");
 };
 
-const QUIZ_ALT_PAUSE_MS = 800;
-let quizAltTimer: number | null = null;
-let quizAltShowB = false;
+const QUIZ_SEQ_PAUSE_MS = 600;
+let quizSeqTimer: number | null = null;
 
-const stopQuizAlt = (): void => {
-  if (quizAltTimer !== null) {
-    window.clearTimeout(quizAltTimer);
-    quizAltTimer = null;
+const stopQuizSeq = (): void => {
+  if (quizSeqTimer !== null) {
+    window.clearTimeout(quizSeqTimer);
+    quizSeqTimer = null;
   }
-  quizAltShowB = false;
 };
 
 const parseCssTimeMs = (value: string): number => {
@@ -51,44 +49,64 @@ const parseCssTimeMs = (value: string): number => {
 };
 
 const quizMotionDurationMs = (ex: HTMLElement): number => {
-  const motion = ex.querySelector<HTMLElement>(".quiz-pop");
-  if (!motion) return 2400;
-  const styles = getComputedStyle(motion);
-  return Math.max(
-    parseCssTimeMs(styles.animationDuration) +
-      parseCssTimeMs(styles.animationDelay),
-    2400,
+  const motions = [
+    ...ex.querySelectorAll<HTMLElement>(
+      ".quiz-menu, .quiz-toast, .quiz-pop, .quiz-rows span",
+    ),
+  ];
+  if (motions.length === 0) return 2800;
+
+  const total = Math.max(
+    ...motions.map((el) => {
+      const styles = getComputedStyle(el);
+      // While paused, duration still resolves from the stylesheet animation.
+      const duration =
+        parseCssTimeMs(styles.animationDuration) ||
+        (el.matches(".quiz-menu")
+          ? 2800
+          : el.matches(".quiz-toast")
+            ? 2200
+            : el.matches(".quiz-pop")
+              ? 2400
+              : 2800);
+      const delay = parseCssTimeMs(styles.animationDelay);
+      return duration + delay;
+    }),
   );
+
+  return Math.max(total, 2200);
 };
 
-const applyQuizAlt = (split: HTMLElement, showB: boolean): HTMLElement | null => {
-  const items = [...split.querySelectorAll<HTMLElement>(":scope > .quiz-ex")];
-  if (items.length < 2) return null;
-
-  items.forEach((item, index) => {
-    item.classList.toggle("is-active", showB ? index === 1 : index === 0);
-  });
-
-  const active = items[showB ? 1 : 0] ?? null;
-  if (active) {
-    active.querySelectorAll<HTMLElement>(".quiz-pop").forEach(restartLoop);
-  }
-  return active;
+const playQuizEx = (ex: HTMLElement): void => {
+  ex.classList.remove("is-playing");
+  void ex.offsetWidth;
+  ex.classList.add("is-playing");
 };
 
-const startQuizAlt = (slide: HTMLElement): void => {
-  stopQuizAlt();
-  const split = slide.querySelector<HTMLElement>(".quiz-split.quiz-alt");
+const startQuizSeq = (slide: HTMLElement): void => {
+  stopQuizSeq();
+  const split = slide.querySelector<HTMLElement>(".quiz-split.quiz-seq");
   if (!split) return;
 
-  const tick = (): void => {
-    const active = applyQuizAlt(split, quizAltShowB);
-    const holdMs =
-      (active ? quizMotionDurationMs(active) : 2400) + QUIZ_ALT_PAUSE_MS;
+  const items = [...split.querySelectorAll<HTMLElement>(":scope > .quiz-ex")];
+  if (items.length < 2) return;
 
-    quizAltTimer = window.setTimeout(() => {
-      quizAltShowB = !quizAltShowB;
-      tick();
+  items.forEach((item) => item.classList.remove("is-playing"));
+
+  let index = 0;
+  const tick = (): void => {
+    items.forEach((item) => item.classList.remove("is-playing"));
+    const active = items[index];
+    if (!active) return;
+    playQuizEx(active);
+
+    const holdMs = quizMotionDurationMs(active);
+    quizSeqTimer = window.setTimeout(() => {
+      active.classList.remove("is-playing");
+      index = (index + 1) % items.length;
+      // Extra beat after B before restarting A.
+      const gap = index === 0 ? QUIZ_SEQ_PAUSE_MS + 400 : QUIZ_SEQ_PAUSE_MS;
+      quizSeqTimer = window.setTimeout(tick, gap);
     }, holdMs);
   };
 
@@ -96,7 +114,7 @@ const startQuizAlt = (slide: HTMLElement): void => {
 };
 
 const restartDemos = (slide: HTMLElement | undefined): void => {
-  stopQuizAlt();
+  stopQuizSeq();
   if (!slide) return;
 
   slide.querySelectorAll<HTMLElement>(".stagger-list").forEach((list) => {
@@ -105,8 +123,8 @@ const restartDemos = (slide: HTMLElement | undefined): void => {
     list.classList.add("run");
   });
 
-  if (slide.querySelector(".quiz-split.quiz-alt")) {
-    startQuizAlt(slide);
+  if (slide.querySelector(".quiz-split.quiz-seq")) {
+    startQuizSeq(slide);
     return;
   }
 

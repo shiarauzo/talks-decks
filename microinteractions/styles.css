@@ -763,6 +763,414 @@ input {
   animation: vocabAsym 1100ms both;
 }
 
+.vocab-card.is-playing[data-vocab="duration"] .vocab-track i {
+  animation: vocabMove 1400ms var(--ease-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="delay"] .vocab-track i {
+  animation: vocabMove 700ms var(--ease-out) 450ms both;
+}
+
+.vocab-card.is-playing[data-vocab="fill-mode"] .vocab-track i {
+  animation: vocabMove 700ms var(--ease-out) forwards;
+}
+
+.vocab-card.is-playing[data-vocab="stepped"] .vocab-track i {
+  animation: vocabMove 1000ms steps(4, end) both;
+}
+
+.vocab-card.is-playing[data-vocab="spring"] .vocab-track i,
+.vocab-card.is-playing[data-vocab="bounce"] .vocab-track i {
+  animation: vocabSpring 900ms both;
+}
+
+.vocab-card.is-playing[data-vocab="stiffness"] .vocab-track i {
+  animation: vocabSpringSnap 520ms both;
+}
+
+.vocab-card.is-playing[data-vocab="damping"] .vocab-track i {
+  animation: vocabSpringLoose 1100ms both;
+}
+
+.vocab-card.is-playing[data-vocab="mass"] .vocab-track i {
+  animation: vocabMove 1200ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.vocab-card.is-playing[data-vocab="interruptible"] .vocab-track i {
+  animation: vocabInterrupt 900ms var(--ease-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="scroll-driven"] .vocab-track i {
+  animation: vocabMove 1200ms linear both;
+}
+
+.vocab-demo {
+  display: block;
+  position: relative;
+  height: 44px;
+  margin-top: 0.55rem;
+  border-radius: 8px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.vocab-demo-rows {
+  display: grid;
+  gap: 4px;
+  padding: 8px;
+  height: auto;
+  min-height: 44px;
+}
+
+.vocab-demo-rows i {
+  display: block;
+  height: 6px;
+  width: 40%;
+  border-radius: 99px;
+  background: var(--ink);
+  opacity: 0.35;
+  transform: translateX(-8px);
+}
+
+.vocab-card.is-playing[data-vocab="stagger"] .vocab-demo-rows i {
+  animation: vocabRowIn 500ms var(--ease-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="stagger"] .vocab-demo-rows i:nth-child(2) {
+  animation-delay: 55ms;
+}
+.vocab-card.is-playing[data-vocab="stagger"] .vocab-demo-rows i:nth-child(3) {
+  animation-delay: 110ms;
+}
+.vocab-card.is-playing[data-vocab="stagger"] .vocab-demo-rows i:nth-child(4) {
+  animation-delay: 165ms;
+}
+
+.vocab-demo-orch {
+  display: grid;
+  place-items: center;
+}
+
+.vocab-demo-orch i {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.vocab-demo-orch i:first-child {
+  left: 12px;
+  top: 15px;
+}
+
+.vocab-demo-orch i:last-child {
+  right: 12px;
+  top: 15px;
+  opacity: 0.45;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1.5px solid var(--ink);
+}
+
+.vocab-card.is-playing[data-vocab="orchestration"] .vocab-demo-orch i:first-child {
+  animation: vocabOrchDot 800ms var(--ease-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="orchestration"] .vocab-demo-orch i:last-child {
+  animation: vocabOrchBox 800ms var(--ease-out) 120ms both;
+}
+
+.vocab-demo-box {
+  display: grid;
+  place-items: center;
+}
+
+.vocab-demo-box i {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: var(--ink);
+}
+
+.vocab-card.is-playing[data-vocab="translate"] .vocab-demo-box i {
+  animation: vocabTranslate 700ms var(--ease-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="scale"] .vocab-demo-box i {
+  animation: vocabScale 700ms var(--ease-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="rotate"] .vocab-demo-box i {
+  animation: vocabRotate 700ms var(--ease-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="skew"] .vocab-demo-box i {
+  animation: vocabSkew 700ms var(--ease-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="scroll-reveal"] .vocab-demo-box i {
+  animation: vocabReveal 700ms var(--ease-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="press"] .vocab-demo-box i {
+  animation: vocabPress 420ms var(--ease-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="hover"] .vocab-demo-box i {
+  animation: vocabHover 600ms var(--ease-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="shake"] .vocab-demo-box i {
+  animation: vocabShake 450ms both;
+}
+
+.vocab-card.is-playing[data-vocab="swipe"] .vocab-demo-box i {
+  animation: vocabSwipe 650ms var(--ease-in) both;
+}
+
+.vocab-demo-origin {
+  display: grid;
+  place-items: end start;
+  padding: 8px;
+}
+
+.vocab-demo-origin i {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: var(--ink);
+  transform-origin: left bottom;
+}
+
+.vocab-card.is-playing[data-vocab="origin"] .vocab-demo-origin i {
+  animation: vocabOriginGrow 700ms var(--ease-out) both;
+}
+
+.vocab-demo-aware {
+  display: grid;
+  place-items: start center;
+  padding-top: 8px;
+}
+
+.vocab-demo-aware b {
+  width: 36px;
+  height: 10px;
+  border-radius: 4px;
+  background: color-mix(in oklab, var(--ink) 55%, transparent);
+}
+
+.vocab-demo-aware i {
+  width: 48px;
+  height: 28px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transform-origin: top center;
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+.vocab-card.is-playing[data-vocab="origin-aware"] .vocab-demo-aware i {
+  animation: vocabAware 700ms var(--ease-out) both;
+}
+
+.vocab-demo-cross {
+  display: grid;
+  place-items: center;
+}
+
+.vocab-demo-cross i {
+  position: absolute;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  font-style: normal;
+  color: var(--ink);
+}
+
+.vocab-card.is-playing[data-vocab="crossfade"] .vocab-demo-cross i:first-child {
+  animation: vocabFadeOut 700ms var(--ease-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="crossfade"] .vocab-demo-cross i:last-child {
+  opacity: 0;
+  animation: vocabFadeIn 700ms var(--ease-out) both;
+}
+
+.vocab-demo-morph i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.vocab-card.is-playing[data-vocab="morph"] .vocab-demo-morph i {
+  animation: vocabMorph 800ms var(--ease-in-out) both;
+}
+
+.vocab-demo-layout i,
+.vocab-demo-shared i {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: var(--ink);
+}
+
+.vocab-card.is-playing[data-vocab="layout"] .vocab-demo-layout i,
+.vocab-card.is-playing[data-vocab="continuity"] .vocab-demo-layout i {
+  animation: vocabLayout 800ms var(--ease-in-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="shared"] .vocab-demo-shared i {
+  animation: vocabShared 800ms var(--ease-out) both;
+}
+
+.vocab-demo-accordion i {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 10px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--ink);
+  transform-origin: top center;
+}
+
+.vocab-card.is-playing[data-vocab="accordion"] .vocab-demo-accordion i {
+  animation: vocabAccordion 700ms var(--ease-out) both;
+}
+
+.vocab-demo-direction i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 5px;
+  background: var(--ink);
+}
+
+.vocab-card.is-playing[data-vocab="direction"] .vocab-demo-direction i {
+  animation: vocabDirection 900ms var(--ease-out) both;
+}
+
+.vocab-demo-parallax i {
+  position: absolute;
+  left: 12px;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--ink);
+}
+
+.vocab-demo-parallax i:first-child {
+  top: 12px;
+  width: 55%;
+  opacity: 0.4;
+}
+
+.vocab-demo-parallax i:last-child {
+  top: 24px;
+  width: 35%;
+}
+
+.vocab-card.is-playing[data-vocab="parallax"] .vocab-demo-parallax i:first-child {
+  animation: vocabParaSlow 900ms linear both;
+}
+
+.vocab-card.is-playing[data-vocab="parallax"] .vocab-demo-parallax i:last-child {
+  animation: vocabParaFast 900ms linear both;
+}
+
+.vocab-demo-page,
+.vocab-demo-view {
+  display: grid;
+  place-items: center;
+}
+
+.vocab-demo-page i,
+.vocab-demo-view i {
+  position: absolute;
+  width: 42%;
+  height: 70%;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.vocab-demo-page i:first-child,
+.vocab-demo-view i:first-child {
+  left: 10%;
+}
+
+.vocab-demo-page i:last-child,
+.vocab-demo-view i:last-child {
+  right: 10%;
+  opacity: 0.35;
+}
+
+.vocab-card.is-playing[data-vocab="page-transition"] .vocab-demo-page i:first-child {
+  animation: vocabPageOut 700ms var(--ease-in) both;
+}
+
+.vocab-card.is-playing[data-vocab="page-transition"] .vocab-demo-page i:last-child {
+  animation: vocabPageIn 700ms var(--ease-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="view-transition"] .vocab-demo-view i:first-child {
+  animation: vocabViewA 750ms var(--ease-in-out) both;
+}
+
+.vocab-card.is-playing[data-vocab="view-transition"] .vocab-demo-view i:last-child {
+  animation: vocabViewB 750ms var(--ease-in-out) both;
+}
+
+.vocab-demo-hold {
+  display: grid;
+  place-items: center;
+  padding: 0 12px;
+}
+
+.vocab-demo-hold i {
+  display: block;
+  width: 100%;
+  height: 8px;
+  border-radius: 99px;
+  background: color-mix(in oklab, var(--ink) 22%, transparent);
+  transform-origin: left center;
+  transform: scaleX(0.08);
+}
+
+.vocab-card.is-playing[data-vocab="hold"] .vocab-demo-hold i {
+  animation: vocabHold 900ms linear both;
+}
+
+.vocab-demo-ripple {
+  display: grid;
+  place-items: center;
+}
+
+.vocab-demo-ripple i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--ink) 55%, transparent);
+}
+
+.vocab-card.is-playing[data-vocab="ripple"] .vocab-demo-ripple i {
+  animation: vocabRipple 700ms var(--ease-out) both;
+}
+
 @keyframes vocabMove {
   from {
     left: 10px;
@@ -783,6 +1191,375 @@ input {
   }
   100% {
     left: 10px;
+  }
+}
+
+@keyframes vocabSpring {
+  0% {
+    left: 10px;
+  }
+  60% {
+    left: calc(100% - 18px);
+  }
+  78% {
+    left: calc(100% - 30px);
+  }
+  100% {
+    left: calc(100% - 24px);
+  }
+}
+
+@keyframes vocabSpringSnap {
+  0% {
+    left: 10px;
+  }
+  70% {
+    left: calc(100% - 20px);
+  }
+  100% {
+    left: calc(100% - 24px);
+  }
+}
+
+@keyframes vocabSpringLoose {
+  0% {
+    left: 10px;
+  }
+  45% {
+    left: calc(100% - 14px);
+  }
+  62% {
+    left: calc(100% - 34px);
+  }
+  78% {
+    left: calc(100% - 18px);
+  }
+  100% {
+    left: calc(100% - 24px);
+  }
+}
+
+@keyframes vocabInterrupt {
+  0% {
+    left: 10px;
+  }
+  35% {
+    left: 55%;
+  }
+  100% {
+    left: 22%;
+  }
+}
+
+@keyframes vocabRowIn {
+  from {
+    opacity: 0.2;
+    transform: translateX(-8px);
+    width: 40%;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    width: 88%;
+  }
+}
+
+@keyframes vocabOrchDot {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(28px, 0) scale(1.15);
+  }
+}
+
+@keyframes vocabOrchBox {
+  from {
+    opacity: 0.2;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes vocabTranslate {
+  from {
+    transform: translateX(-16px);
+  }
+  to {
+    transform: translateX(16px);
+  }
+}
+
+@keyframes vocabScale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.45);
+  }
+}
+
+@keyframes vocabRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(120deg);
+  }
+}
+
+@keyframes vocabSkew {
+  0%,
+  100% {
+    transform: skewX(0deg);
+  }
+  50% {
+    transform: skewX(18deg);
+  }
+}
+
+@keyframes vocabReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vocabPress {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.86);
+  }
+}
+
+@keyframes vocabHover {
+  0%,
+  100% {
+    transform: translateY(0);
+    background: var(--ink);
+  }
+  50% {
+    transform: translateY(-4px);
+    background: var(--good);
+  }
+}
+
+@keyframes vocabShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes vocabSwipe {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(48px);
+    opacity: 0;
+  }
+}
+
+@keyframes vocabOriginGrow {
+  from {
+    transform: scale(0.4);
+  }
+  to {
+    transform: scale(1.35);
+  }
+}
+
+@keyframes vocabAware {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes vocabFadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes vocabFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vocabMorph {
+  0% {
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+  }
+  100% {
+    border-radius: 6px;
+    width: 36px;
+    height: 18px;
+    margin: -9px 0 0 -18px;
+  }
+}
+
+@keyframes vocabLayout {
+  from {
+    width: 18px;
+    height: 18px;
+  }
+  to {
+    width: 62%;
+    height: 22px;
+  }
+}
+
+@keyframes vocabShared {
+  from {
+    left: 12px;
+    top: 12px;
+    width: 14px;
+    height: 14px;
+  }
+  to {
+    left: 28%;
+    top: 8px;
+    width: 48%;
+    height: 28px;
+  }
+}
+
+@keyframes vocabAccordion {
+  from {
+    height: 8px;
+  }
+  to {
+    height: 26px;
+  }
+}
+
+@keyframes vocabDirection {
+  0% {
+    transform: translateX(-22px);
+    opacity: 0;
+  }
+  35% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  65% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(22px);
+    opacity: 0;
+  }
+}
+
+@keyframes vocabParaSlow {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(18px);
+  }
+}
+
+@keyframes vocabParaFast {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(42px);
+  }
+}
+
+@keyframes vocabPageOut {
+  to {
+    transform: translateX(-30%);
+    opacity: 0;
+  }
+}
+
+@keyframes vocabPageIn {
+  from {
+    transform: translateX(30%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes vocabViewA {
+  to {
+    transform: scale(0.7);
+    opacity: 0.2;
+  }
+}
+
+@keyframes vocabViewB {
+  from {
+    transform: scale(0.7);
+    opacity: 0.2;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes vocabHold {
+  from {
+    transform: scaleX(0.08);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes vocabRipple {
+  from {
+    transform: scale(0.4);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(4.5);
+    opacity: 0;
   }
 }
 
@@ -1060,27 +1837,65 @@ input {
   margin-bottom: 2rem;
 }
 
-.quiz-split.quiz-alt {
-  grid-template-columns: 1fr;
-  min-height: 260px;
-  place-items: center;
+/* Play A then B, one full cycle each. */
+.quiz-seq .quiz-menu,
+.quiz-seq .quiz-toast,
+.quiz-seq .quiz-pop,
+.quiz-seq .quiz-rows span {
+  animation: none !important;
 }
 
-.quiz-alt .quiz-ex {
-  display: none;
+.quiz-seq .quiz-menu,
+.quiz-seq .quiz-toast,
+.quiz-seq .quiz-pop {
+  opacity: 0;
 }
 
-.quiz-alt .quiz-ex.is-active {
-  display: grid;
+.quiz-seq .quiz-rows span {
+  opacity: 0;
 }
 
-.quiz-alt .quiz-ex.is-active .quiz-pop {
-  animation-iteration-count: 1;
-  animation-fill-mode: both;
+.quiz-seq .quiz-ex.is-playing.loop-ease-in .quiz-menu {
+  animation: quizMenuInOut 2.8s var(--ease-in) 1 both !important;
+}
+
+.quiz-seq .quiz-ex.is-playing.loop-ease-out .quiz-menu {
+  animation: quizMenuInOut 2.8s var(--ease-out) 1 both !important;
+}
+
+.quiz-seq .quiz-ex.is-playing.loop-scale-zero .quiz-toast {
+  animation: quizScaleZero 2.2s var(--ease-out) 1 both !important;
+}
+
+.quiz-seq .quiz-ex.is-playing.loop-scale-soft .quiz-toast {
+  animation: quizScaleSoft 2.2s var(--ease-out) 1 both !important;
+}
+
+.quiz-seq .quiz-ex.is-playing.loop-origin-center .quiz-pop {
+  animation: quizPopCenter 2.4s var(--ease-out) 1 both !important;
+}
+
+.quiz-seq .quiz-ex.is-playing.loop-origin-trigger .quiz-pop {
+  animation: quizPopOrigin 2.4s var(--ease-out) 1 both !important;
+}
+
+.quiz-seq .quiz-ex.is-playing .loop-stagger-off span,
+.quiz-seq .quiz-ex.is-playing .loop-stagger-on span {
+  animation: quizRowIn 2.8s var(--ease-out) 1 both !important;
+}
+
+.quiz-seq .quiz-ex.is-playing .loop-stagger-on span:nth-child(2) {
+  animation-delay: 55ms !important;
+}
+.quiz-seq .quiz-ex.is-playing .loop-stagger-on span:nth-child(3) {
+  animation-delay: 110ms !important;
+}
+.quiz-seq .quiz-ex.is-playing .loop-stagger-on span:nth-child(4) {
+  animation-delay: 165ms !important;
 }
 
 @media (max-width: 900px) {
-  .quiz-split:not(.quiz-alt) {
+  .quiz-split {
     grid-template-columns: 1fr;
   }
 }
@@ -1461,7 +2276,10 @@ input {
   .loop-origin-trigger .quiz-pop,
   .loop-stagger-off span,
   .loop-stagger-on span,
-  .quiz-spinner {
+  .quiz-spinner,
+  .vocab-card.is-playing .vocab-track i,
+  .vocab-card.is-playing .vocab-demo i,
+  .vocab-card.is-playing .vocab-demo-aware i {
     animation: none !important;
   }
 

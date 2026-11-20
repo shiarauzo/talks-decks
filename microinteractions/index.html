@@ -38,7 +38,7 @@
 
       <section class="slide" data-slide="3">
         <h2>Identifica la diferencia</h2>
-        <div class="quiz-split">
+        <div class="quiz-split quiz-seq">
           <article class="quiz-ex loop-ease-in">
             <p class="quiz-label">A</p>
             <div class="quiz-anchor">
@@ -75,7 +75,7 @@
 
       <section class="slide" data-slide="5">
         <h2>Identifica la diferencia</h2>
-        <div class="quiz-split">
+        <div class="quiz-split quiz-seq">
           <article class="quiz-ex loop-scale-zero">
             <p class="quiz-label">A</p>
             <div class="quiz-toast-stage">
@@ -96,7 +96,7 @@
 
       <section class="slide" data-slide="6">
         <h2>Identifica la diferencia</h2>
-        <div class="quiz-split">
+        <div class="quiz-split quiz-seq">
           <article class="quiz-ex loop-origin-center">
             <p class="quiz-label">A</p>
             <div class="quiz-anchor">
@@ -131,7 +131,7 @@
 
       <section class="slide" data-slide="7">
         <h2>Identifica la diferencia</h2>
-        <div class="quiz-split">
+        <div class="quiz-split quiz-seq">
           <article class="quiz-ex">
             <p class="quiz-label">A</p>
             <div class="quiz-rows loop-stagger-off">
@@ -189,13 +189,13 @@
           </article>
           <article>
             <span>04</span>
-            <b>Patrones útiles + checklist</b>
+            <b>Patrones + vocabulario</b>
             <time><a href="#30">#30</a> · 12 min</time>
           </article>
           <article>
             <span>05</span>
             <b>Cierre</b>
-            <time><a href="#34">#34</a> · 3 min</time>
+            <time><a href="#40">#40</a> · 3 min</time>
           </article>
         </div>
         <aside>
@@ -755,7 +755,7 @@
       <section class="slide" data-slide="19">
         <h2>Origin-aware vs centro.</h2>
         <p class="quiz-prompt">Misma animación. Solo cambia el transform-origin.</p>
-        <div class="quiz-split quiz-alt">
+        <div class="quiz-split quiz-seq">
           <article class="quiz-ex loop-origin-center">
             <p class="quiz-label">A</p>
             <p class="hint">origin: center</p>
@@ -793,9 +793,6 @@
       <section class="slide" data-slide="20">
         <p class="section-num">04</p>
         <h2>Patrones útiles</h2>
-        <p class="lead">
-          Recetas que puedes copiar mañana sin reinventar el feel.
-        </p>
         <aside>
           No son librerías. Son decisiones reutilizables.
         </aside>
@@ -892,15 +889,260 @@
           </button>
         </div>
         <aside>
-          Fuente: animations.dev/vocabulary#easing. Que el público clickee. Comparar
-          ease-in vs ease-out en el mismo gesto.
+          Fuente: animations.dev/vocabulary#easing. Comparar ease-in vs ease-out.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="23b">
+        <h2>Vocabulario: sequencing &amp; timing</h2>
+        <p class="lead">Haz clic en cada término para sentirlo.</p>
+        <div class="vocab-grid">
+          <button class="vocab-card" type="button" data-vocab="duration">
+            <span class="vocab-name">Duration</span>
+            <span class="vocab-def">Cuánto dura el movimiento.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="delay">
+            <span class="vocab-name">Delay</span>
+            <span class="vocab-def">Espera antes de empezar.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="stagger">
+            <span class="vocab-name">Stagger</span>
+            <span class="vocab-def">Cascada: un item tras otro con delay corto.</span>
+            <span class="vocab-demo vocab-demo-rows" aria-hidden="true">
+              <i></i><i></i><i></i><i></i>
+            </span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="fill-mode">
+            <span class="vocab-name">Fill mode</span>
+            <span class="vocab-def">Mantiene el primer o último frame (forwards).</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="stepped">
+            <span class="vocab-name">Stepped</span>
+            <span class="vocab-def">Pasos discretos, como un countdown.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+        </div>
+        <aside>
+          animations.dev/vocabulary#sequencing-and-timing
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="23c">
+        <h2>Vocabulario: spring animations</h2>
+        <p class="lead">Haz clic en cada término para sentirlo.</p>
+        <div class="vocab-grid">
+          <button class="vocab-card" type="button" data-vocab="spring">
+            <span class="vocab-name">Spring</span>
+            <span class="vocab-def">Física (tensión, masa, damping), no duración fija.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="bounce">
+            <span class="vocab-name">Bounce</span>
+            <span class="vocab-def">Overshoot y asiento. Más playfulness.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="stiffness">
+            <span class="vocab-name">Stiffness</span>
+            <span class="vocab-def">Más tensión = más snappy hacia el target.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="damping">
+            <span class="vocab-name">Damping</span>
+            <span class="vocab-def">Bajo = más oscilación. Alto = asienta rápido.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="mass">
+            <span class="vocab-name">Mass</span>
+            <span class="vocab-def">Más masa = se siente más pesado y lento.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="interruptible">
+            <span class="vocab-name">Interruptible</span>
+            <span class="vocab-def">Se redirige a mitad sin terminar primero.</span>
+            <span class="vocab-track" aria-hidden="true"><i></i></span>
+          </button>
+        </div>
+        <aside>
+          animations.dev/vocabulary#spring-animations. Clic rápido en Interruptible.
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="23d">
+        <h2>Vocabulario: movement &amp; transforms</h2>
+        <p class="lead">Haz clic en cada término para sentirlo.</p>
+        <div class="vocab-grid">
+          <button class="vocab-card" type="button" data-vocab="translate">
+            <span class="vocab-name">Translate</span>
+            <span class="vocab-def">Mover en X o Y sin tocar layout.</span>
+            <span class="vocab-demo vocab-demo-box" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="scale">
+            <span class="vocab-name">Scale</span>
+            <span class="vocab-def">Más grande o más chico desde un origin.</span>
+            <span class="vocab-demo vocab-demo-box" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="rotate">
+            <span class="vocab-name">Rotate</span>
+            <span class="vocab-def">Girar alrededor de un punto.</span>
+            <span class="vocab-demo vocab-demo-box" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="skew">
+            <span class="vocab-name">Skew</span>
+            <span class="vocab-def">Inclinar / shear del rectángulo.</span>
+            <span class="vocab-demo vocab-demo-box" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="origin">
+            <span class="vocab-name">Transform origin</span>
+            <span class="vocab-def">Ancla desde donde crece o gira.</span>
+            <span class="vocab-demo vocab-demo-origin" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="origin-aware">
+            <span class="vocab-name">Origin-aware</span>
+            <span class="vocab-def">Sale del trigger, no del centro propio.</span>
+            <span class="vocab-demo vocab-demo-aware" aria-hidden="true">
+              <b></b><i></i>
+            </span>
+          </button>
+        </div>
+        <aside>
+          animations.dev/vocabulary#movement-and-transforms
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="23e">
+        <h2>Vocabulario: transitions between states</h2>
+        <p class="lead">Haz clic en cada término para sentirlo.</p>
+        <div class="vocab-grid">
+          <button class="vocab-card" type="button" data-vocab="crossfade">
+            <span class="vocab-name">Crossfade</span>
+            <span class="vocab-def">Uno sale, otro entra, mismo lugar.</span>
+            <span class="vocab-demo vocab-demo-cross" aria-hidden="true">
+              <i>A</i><i>B</i>
+            </span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="morph">
+            <span class="vocab-name">Morph</span>
+            <span class="vocab-def">Una forma se convierte en otra.</span>
+            <span class="vocab-demo vocab-demo-morph" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="layout">
+            <span class="vocab-name">Layout animation</span>
+            <span class="vocab-def">Anima al nuevo tamaño/posición, no snap.</span>
+            <span class="vocab-demo vocab-demo-layout" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="accordion">
+            <span class="vocab-name">Accordion</span>
+            <span class="vocab-def">Expande / colapsa altura con suavidad.</span>
+            <span class="vocab-demo vocab-demo-accordion" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="shared">
+            <span class="vocab-name">Shared element</span>
+            <span class="vocab-def">El mismo elemento viaja y transforma.</span>
+            <span class="vocab-demo vocab-demo-shared" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="direction">
+            <span class="vocab-name">Direction-aware</span>
+            <span class="vocab-def">Adelante un lado, atrás el opuesto.</span>
+            <span class="vocab-demo vocab-demo-direction" aria-hidden="true"><i></i></span>
+          </button>
+        </div>
+        <aside>
+          animations.dev/vocabulary#transitions-between-states
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="23f">
+        <h2>Vocabulario: scroll</h2>
+        <p class="lead">Haz clic en cada término para sentirlo.</p>
+        <div class="vocab-grid">
+          <button class="vocab-card" type="button" data-vocab="scroll-reveal">
+            <span class="vocab-name">Scroll reveal</span>
+            <span class="vocab-def">Aparece al entrar al viewport.</span>
+            <span class="vocab-demo vocab-demo-box" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="parallax">
+            <span class="vocab-name">Parallax</span>
+            <span class="vocab-def">Capas a distinta velocidad = profundidad.</span>
+            <span class="vocab-demo vocab-demo-parallax" aria-hidden="true">
+              <i></i><i></i>
+            </span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="scroll-driven">
+            <span class="vocab-name">Scroll-driven</span>
+            <span class="vocab-def">El progreso sigue al scroll, no al clock.</span>
+            <span class="vocab-track vocab-track-scrub" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="page-transition">
+            <span class="vocab-name">Page transition</span>
+            <span class="vocab-def">Cambio de ruta / página con motion.</span>
+            <span class="vocab-demo vocab-demo-page" aria-hidden="true">
+              <i></i><i></i>
+            </span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="view-transition">
+            <span class="vocab-name">View transition</span>
+            <span class="vocab-def">El browser morpha entre dos estados.</span>
+            <span class="vocab-demo vocab-demo-view" aria-hidden="true">
+              <i></i><i></i>
+            </span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="continuity">
+            <span class="vocab-name">Continuity</span>
+            <span class="vocab-def">Conecta before/after para no desorientar.</span>
+            <span class="vocab-demo vocab-demo-layout" aria-hidden="true"><i></i></span>
+          </button>
+        </div>
+        <aside>
+          animations.dev/vocabulary#scroll
+        </aside>
+      </section>
+
+      <section class="slide" data-slide="23g">
+        <h2>Vocabulario: feedback &amp; interaction</h2>
+        <p class="lead">Haz clic en cada término para sentirlo.</p>
+        <div class="vocab-grid">
+          <button class="vocab-card" type="button" data-vocab="press">
+            <span class="vocab-name">Press / tap</span>
+            <span class="vocab-def">Scale sutil: la UI escuchó.</span>
+            <span class="vocab-demo vocab-demo-box" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="hover">
+            <span class="vocab-name">Hover</span>
+            <span class="vocab-def">Cambio visual al pasar el cursor.</span>
+            <span class="vocab-demo vocab-demo-box" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="hold">
+            <span class="vocab-name">Hold to confirm</span>
+            <span class="vocab-def">Se llena mientras mantienes.</span>
+            <span class="vocab-demo vocab-demo-hold" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="shake">
+            <span class="vocab-name">Shake / wiggle</span>
+            <span class="vocab-def">Error o input rechazado.</span>
+            <span class="vocab-demo vocab-demo-box" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="ripple">
+            <span class="vocab-name">Ripple</span>
+            <span class="vocab-def">Círculo desde el punto del tap.</span>
+            <span class="vocab-demo vocab-demo-ripple" aria-hidden="true"><i></i></span>
+          </button>
+          <button class="vocab-card" type="button" data-vocab="swipe">
+            <span class="vocab-name">Swipe to dismiss</span>
+            <span class="vocab-def">Arrastra fuera para cerrar.</span>
+            <span class="vocab-demo vocab-demo-box" aria-hidden="true"><i></i></span>
+          </button>
+        </div>
+        <aside>
+          animations.dev/vocabulary#feedback-and-interaction
         </aside>
       </section>
 
       <section class="slide" data-slide="26">
         <p class="section-num">05</p>
         <h2>Los detalles que nadie nota son exactamente los que hacen que todo se sienta bien.</h2>
-        <p class="lead">Gracias. Preguntas.</p>
         <aside>
           Abrir Q&A. Si sobra tiempo: live-fix de un componente que alguien traiga
           (botón, modal, toast).
